@@ -16,6 +16,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.fdorval.spoilgot.api.SpoilController;
 import com.fdorval.spoilgot.api.model.GotCharacterFront;
 
 
@@ -69,12 +70,14 @@ public class ComponentTest {
 	    
 	    /**
 	     * l'appli doit retourner 400 si le paramètre "season" n'est pas un entier
+	     * @return 400
 	     * @throws Exception
 	     */
 	    //TODO
 	    @Test
 	    public void shouldReturn400ifSeasonIsNotInt() throws Exception {
-	    	//A vous de coder
+	    	GotCharacterFront[] persos = this.restTemplate.getForObject("http://localhost:" + port + "/characters?season=toto",
+	    			GotCharacterFront[].class);
 	    }
 	    
 	    /**
@@ -84,7 +87,8 @@ public class ComponentTest {
 	    //TODO
 	    @Test
 	    public void shouldReturn400ifSeasonIsLowerThanOne() throws Exception {
-	    	//A vous de coder
+	    	GotCharacterFront[] persos = this.restTemplate.getForObject("http://localhost:" + port + "/characters?season=-1",
+	    			GotCharacterFront[].class);
 	    }
 	    
 	    /**
@@ -94,7 +98,8 @@ public class ComponentTest {
 	    //TODO
 	    @Test
 	    public void shouldReturn400ifSeasonIsHigherThanEight() throws Exception {
-	    	//A vous de coder
+	    	GotCharacterFront[] persos = this.restTemplate.getForObject("http://localhost:" + port + "/characters?season=9",
+	    			GotCharacterFront[].class);
 	    }
 	    
 }
